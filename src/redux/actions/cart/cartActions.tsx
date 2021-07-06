@@ -1,5 +1,6 @@
 import { Dispatch } from "react";
 import { Product } from "../../../mockdata/products";
+import { CartActionTypes } from "../../actiontypes/cart";
 import { CartAction } from "../../interfaces/cart/cartInterface";
 
 export const handleCheckout = (products: Product[]): void => {
@@ -18,7 +19,7 @@ export const handleQuantityChange = (
   quantity: number
 ): void => {
   dispatch({
-    type: "CHANGE_QUANTITY",
+    type: CartActionTypes.CHANGE_QUANTITY,
     payload: { productId: productId, quantity: quantity, cost: 0 },
   });
 };
@@ -28,7 +29,7 @@ export const handleDeleteItem = (
   productId: number
 ): void => {
   dispatch({
-    type: "DELETE_ITEM",
+    type: CartActionTypes.DELETE_ITEM,
     payload: { productId: productId, quantity: 0, cost: 0 },
   });
 };

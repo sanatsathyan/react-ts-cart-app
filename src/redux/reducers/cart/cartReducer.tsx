@@ -1,4 +1,5 @@
 import { Product } from "../../../mockdata/products";
+import { CartActionTypes } from "../../actiontypes/cart";
 import { CartAction } from "../../interfaces/cart/cartInterface";
 
 export const cartReducer = (
@@ -6,7 +7,7 @@ export const cartReducer = (
   action: CartAction
 ): Product[] => {
   switch (action.type) {
-    case "CHANGE_QUANTITY":
+    case CartActionTypes.CHANGE_QUANTITY:
       return state.map((item) => {
         if (item.productId === action.payload.productId) {
           return { ...item, quantity: action.payload.quantity };
@@ -14,7 +15,7 @@ export const cartReducer = (
           return item;
         }
       });
-    case "DELETE_ITEM":
+    case CartActionTypes.DELETE_ITEM:
       return state.filter((item) => {
         return item.productId !== action.payload.productId;
       });
